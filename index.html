@@ -399,6 +399,63 @@
             }
         }
         
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            .mobile-menu.active {
+                display: flex;
+            }
+            .merch {
+                gap: 10px;
+            }
+            .item {
+                width: calc(50% - 20px);
+            }
+            h1.intro {
+                padding: 100px 20px 80px;
+                font-size: 1.8rem;
+            }
+            /* Player spotlight responsive design */
+            .spotlight-content {
+                padding: 0 15px;
+            }
+            .spotlight-image {
+                width: 150px;
+                height: 150px;
+            }
+            .spotlight-quote {
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+            /* Section padding on mobile */
+            section {
+                padding: 30px 15px;
+            }
+            /* Spotlight sections on mobile */
+            #player-spotlight,
+            #chronicle-spotlight {
+                padding: 0 15px;
+            }
+            /* Achievement cards on mobile */
+            .achievement-card {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            /* Match schedule on mobile */
+            .match {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .match-teams {
+                justify-content: center;
+            }
+        }
+        
         @media (max-width: 480px) {
             .item {
                 width: 100%;
@@ -412,6 +469,71 @@
             .logo {
                 height: 40px;
             }
+            /* Extra small screen adjustments */
+            .spotlight-image {
+                width: 120px;
+                height: 120px;
+            }
+            h1.intro {
+                font-size: 1.5rem;
+                padding: 80px 15px 60px;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .mobile-menu a {
+                padding: 15px;
+                font-size: 1.1rem;
+            }
+        }
+        /* Mobile menu toggle positioning */
+        
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+        }
+        
+        .hamburger {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-light);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 20, 40, 0.95);
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            padding: 10px 0;
+            z-index: 999;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 600;
+            text-align: center;
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--primary-color);
         }
         /* Fnatic brand styling */
         
@@ -612,6 +734,16 @@
             font-size: 0.7rem;
             font-weight: bold;
         }
+        
+        /* Farewell section styling */
+        #farewell {
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0.9;
+        }
+
+        #farewell h2 {
+            color: var(--primary-color); /* Keep the Fnatic orange color */
+        }
     </style>
 </head>
 
@@ -626,7 +758,7 @@
     <header>
         <nav>
             <a href="https://fnatic.com/" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Esports_organization_Fnatic_logo.svg/2560px-Esports_organization_Fnatic_logo.svg.png" alt="Fnatic Logo" class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Esports_organization_Fnatic_logo.svg/450px-Esports_organization_Fnatic_logo.svg.png?20200815054317" alt="Fnatic Logo" class="logo">
             </a>
             <div class="nav-links">
                 <a href="#merch">Merch</a>
@@ -636,7 +768,22 @@
                 <a href="#achievements">Achievements</a>
                 <a href="#matches">Matches</a>
             </div>
+            <!-- Mobile menu button -->
+            <div class="mobile-menu-toggle">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </div>
         </nav>
+        <!-- Mobile menu (Initially hidden) -->
+        <div class="mobile-menu">
+            <a href="#merch">Merch</a>
+            <a href="#players">Players</a>
+            <a href="#coaches">Coaches</a>
+            <a href="#history">History</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#matches">Matches</a>
+        </div>
     </header>
 
     <h1 class="intro">THE <span class="fnatic-orange">FNATIC</span> VALORANT EXPERIENCE</h1>
@@ -883,12 +1030,12 @@
 
     <div class="divider"></div>
 
-    <section id="inactive-players" class="fade-in inactive-section">
-        <h2>INACTIVE <span class="fnatic-orange">PLAYERS</span></h2>
+    <section id="farewell" class="fade-in inactive-section">
+        <h2>FAREWELL <span class="fnatic-orange">LEO</span></h2>
 
         <div class="merch">
             <div class="item">
-                <span class="inactive-label">INACTIVE</span>
+                <span class="inactive-label">FORMER PLAYER</span>
                 <img src="https://cdn.sanity.io/images/5gii1snx/production/bd795dbb01efa8ffa6f1b4a7698740ec0c72ae8c-1000x1000.png" alt="Leo" class="item-image">
                 <div class="item-content">
                     <h3>Leo "Leo" Jannesson</h3>
@@ -900,7 +1047,7 @@
                         <p><strong>K/D:</strong> 1.18</p>
                         <p><strong>Headshot %:</strong> 26%</p>
                         <p><strong>Signature Agents:</strong> Sova, Fade, Breach</p>
-                        <p><strong>Note:</strong> Inactive since late 2024 due to health reasons. Still on roster but did not play in Valorant Champions 2025. No return planned in the near future.</p>
+                        <p><strong>Note:</strong> Left Fnatic in 2025 after contributing significantly to the team's success. We wish him the best in his future endeavors.</p>
                     </div>
                 </div>
             </div>
@@ -942,40 +1089,40 @@
 
         <div class="match-schedule">
             <div class="match">
-                <div class="match-date">September 15, 2025</div>
+                <div class="match-date">October 2, 2025</div>
                 <div class="match-teams">
                     <span>Fnatic</span>
                     <span class="match-vs">VS</span>
-                    <span>Team Liquid</span>
+                    <span>G2 Esports</span>
                 </div>
-                <div class="match-event">VCT EMEA Stage 2</div>
+                <div class="match-event">VCT EMEA Stage 2 Finals</div>
             </div>
 
             <div class="match">
-                <div class="match-date">September 22, 2025</div>
+                <div class="match-date">October 8, 2025</div>
                 <div class="match-teams">
                     <span>Fnatic</span>
                     <span class="match-vs">VS</span>
-                    <span>NAVI</span>
+                    <span>FNC Academy</span>
                 </div>
-                <div class="match-event">VCT EMEA Stage 2</div>
+                <div class="match-event">Preparation Series</div>
             </div>
 
             <div class="match">
-                <div class="match-date">October 5, 2025</div>
+                <div class="match-date">October 15, 2025</div>
                 <div class="match-teams">
                     <span>Fnatic</span>
                     <span class="match-vs">VS</span>
-                    <span>Karmine Corp</span>
+                    <span>Team Heretics</span>
                 </div>
-                <div class="match-event">VCT EMEA Stage 2</div>
+                <div class="match-event">VCT Last Chance Qualifier</div>
             </div>
         </div>
     </section>
 
     <div class="divider"></div>
 
-    <section class="player-spotlight fade-in">
+    <section id="player-spotlight" class="fade-in">
         <h2>PLAYER <span class="fnatic-orange">SPOTLIGHT</span></h2>
 
         <div class="spotlight-content">
@@ -988,36 +1135,49 @@
 
     <div class="divider"></div>
 
+    <section id="player-spotlight" class="fade-in">
+        <h2>PLAYER <span class="fnatic-orange">SPOTLIGHT</span></h2>
+
+        <div class="spotlight-content">
+            <img src="https://cdn.sanity.io/images/5gii1snx/production/c560cfe528a6425bb3b97eade522f97514d1325a-1000x1000.png" alt="Chronicle Spotlight" class="spotlight-image spotlight-clickable">
+            <h3>Timofey "Chronicle" Khromov</h3>
+            <p class="spotlight-quote">"Being able to play any role the team needs is my biggest strength. I just want to help Fnatic achieve our main goal - a Champions trophy."</p>
+            <p>Chronicle is Fnatic's versatile flex player who can adapt to any role the team requires. His flexibility has been crucial in Fnatic's tactical approach and lineup stability throughout various tournaments.</p>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
     <section class="fade-in">
         <h2>FNATIC <span class="fnatic-orange">VALORANT</span> NEWS</h2>
 
         <div class="news-grid">
             <div class="news-card">
-                <img src="https://cdn.sanity.io/images/5gii1snx/production/abc76ad853730deb948f1a64bb0efbb67e9b0b11-1920x1008.png" alt="Fnatic News" class="news-image">
+                <img src="https://esportsinsider.com/wp-content/uploads/2025/08/Fnatic-Qualifies-For-VALORANT-Champions-1536x864.jpg.webp" alt="Fnatic Qualifies for Champions" class="news-image">
                 <div class="news-content">
-                    <span class="news-date">August 15, 2025</span>
-                    <h3>Fnatic Ready for Valorant Champions 2025 With Stable Roster</h3>
-                    <p>After finishing as runners-up at Masters Toronto and the Esports World Cup, Fnatic enters Valorant Champions 2025 as one of the favorites...</p>
+                    <span class="news-date">September 28, 2025</span>
+                    <h3>Fnatic Qualifies for VALORANT Champions Paris</h3>
+                    <p>After a fierce competition in the VCT EMEA Stage 2, Fnatic secures their spot at VALORANT Champions 2025 in Paris. The team's strategic gameplay and individual performances sealed their place at the ultimate stage...</p>
                     <a href="https://fnatic.com/news" target="_blank" class="item-link">Read More</a>
                 </div>
             </div>
 
             <div class="news-card">
-                <img src="https://www.prosettings.gg/wp-content/uploads/2025/01/kaajak-valorant-player-profile-picture.webp" alt="Fnatic News" class="news-image">
+                <img src="https://www.dexerto.com/cdn-image/wp-content/uploads/2023/08/25/53139100442_991aef2016_k_1600x900.jpg" alt="Chronicle Steps Up as In-Game Leader" class="news-image">
                 <div class="news-content">
-                    <span class="news-date">July 28, 2025</span>
-                    <h3>Kaajak Named MVP of VCT EMEA Stage 1 2025</h3>
-                    <p>Fnatic's duelist, Kaajak, received the MVP award after a brilliant performance leading his team to win EMEA Stage 1...</p>
+                    <span class="news-date">September 20, 2025</span>
+                    <h3>Chronicle Steps Up as In-Game Leader</h3>
+                    <p>Following Boaster's tactical adjustments, Chronicle takes on increased leadership responsibilities during crucial match moments...</p>
                     <a href="https://fnatic.com/news" target="_blank" class="item-link">Read More</a>
                 </div>
             </div>
 
             <div class="news-card">
-                <img src="https://www.prosettings.gg/wp-content/uploads/2021/10/crashies-valorant-player-profile-picture-2025.webp" alt="Fnatic News" class="news-image">
+                <img src="https://admin.esports.gg/wp-content/uploads/2025/09/Fnatic-boaster-valorant-968x544.png" alt="Boaster Reflects on Team's Journey to Paris" class="news-image">
                 <div class="news-content">
-                    <span class="news-date">December 10, 2024</span>
-                    <h3>Fnatic Officially Acquires Crashies and Kaajak</h3>
-                    <p>Fnatic announced roster changes by bringing in Crashies and Kaajak to strengthen their lineup for the 2025 season...</p>
+                    <span class="news-date">September 15, 2025</span>
+                    <h3>Boaster Reflects on Team's Journey to Paris</h3>
+                    <p>In a recent interview, captain Boaster discusses the challenges the team faced and their preparation strategy for the Champions tournament in Paris...</p>
                     <a href="https://fnatic.com/news" target="_blank" class="item-link">Read More</a>
                 </div>
             </div>
@@ -1191,6 +1351,36 @@
         window.addEventListener('scroll', checkFade);
         window.addEventListener('load', checkFade);
 
+        // Mobile menu toggle functionality
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        if (mobileMenuToggle && mobileMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('active');
+
+                // Animate hamburger
+                const hamBurgers = document.querySelectorAll('.hamburger');
+                hamBurgers.forEach(burger => {
+                    burger.classList.toggle('active');
+                });
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+
+                    // Remove active class from hamburger
+                    const hamBurgers = document.querySelectorAll('.hamburger');
+                    hamBurgers.forEach(burger => {
+                        burger.classList.remove('active');
+                    });
+                });
+            });
+        }
+
         // Simulate loading completion
         setTimeout(() => {
             document.querySelector('.loading-bar').style.display = 'none';
@@ -1214,8 +1404,59 @@
         .spotlight-clickable:hover {
             box-shadow: 0 0 0 4px #ff4655;
         }
+        /* Player spotlight and Chronicle spotlight styling */
+        
+        #player-spotlight,
+        #chronicle-spotlight {
+            text-align: center;
+            margin: 20px auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            max-width: 1200px;
+        }
+        
+        .spotlight-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        
+        .spotlight-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        
+        .spotlight-image:hover {
+            box-shadow: 0 0 0 4px #ff4655;
+        }
+        
+        .spotlight-quote {
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .spotlight-quote:before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-color);
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            opacity: 0.3;
+        }
     </style>
 </body>
 
 </html>
-
